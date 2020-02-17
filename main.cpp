@@ -24,14 +24,6 @@ void Sortear();
 
 int main()
 {
-    Nomes.push_back("zed");
-    Nomes.push_back("singed");
-    Nomes.push_back("Volibear");
-    Nomes.push_back("veigar");
-    Nomes.push_back("kayle");
-    Nomes.push_back("teemo");
-    Nomes.push_back("master yi");
-    Nomes.push_back("YASUO");
     servidor = new EasyMultServer(25565,&EventosServidor);
     if(!servidor->Start(&RequestProcess,20,&AcceptFunction))
     {
@@ -54,7 +46,7 @@ void RequestProcess(void *arg)
     {
         if(IpAdicionado[Socket->getIP()])
         {
-            Socket->SendMsg("Seu ip ja foi Adionado A lista");
+            Socket->SendMsg("Seu ip ja esta na lista");
             return;
         }
         vector<string> Dados{split(msg,',')};
@@ -69,7 +61,7 @@ void RequestProcess(void *arg)
 void AcceptFunction(void *arg)
 {
     Nsock *Socket = (Nsock*)arg;
-    Socket->SendMsg("Envie 'add,seunome' para lhe adicionar a lista de sorteio");
+    Socket->SendMsg("Envie 'add,seu_nome' para lhe adicionar a lista do sorteio");
 }
 
 
